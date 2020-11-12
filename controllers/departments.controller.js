@@ -50,7 +50,7 @@ exports.modify = async (req, res) => {
         const dep = await (Department.findById(req.params.id));
         if (dep) {
             await Department.updateOne({ _id: req.params.id }, { $set: { name: name } });
-            res.json({ message: `Department: ${_id} has been changed` });
+            res.json({ message: `Department: ${req.params.id} has been changed` });
         }
         else res.status(404).json({ message: 'Not found...' });
     }
@@ -64,7 +64,7 @@ exports.remove = async (req, res) => {
         const dep = await (Department.findById(req.params.id));
         if (dep) {
             await Department.deleteOne({ _id: req.params.id });
-            res.json({ message: `Department: ${_id} has been removed` });
+            res.json({ message: `Department: ${req.params.id} has been removed` });
         }
         else res.status(404).json({ message: 'Not found...' });
     }
